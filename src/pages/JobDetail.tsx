@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
-import { Badge } from '../components/ui/badge';
 import { JobNotFound } from '../components/JobNotFound';
 import { EmailNotVerified } from '../components/EmailNotVerified';
 import { JobDetailSkeleton } from '../components/JobDetailSkeleton';
