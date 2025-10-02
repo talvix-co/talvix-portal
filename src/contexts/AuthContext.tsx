@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import type { User, AuthState } from '../types/auth'
 import { supabase } from '../lib/supabase'
-import type { AuthError, Session } from '@supabase/supabase-js'
+import type { AuthError } from '@supabase/supabase-js'
 
 interface AuthContextType extends AuthState {
   signUp: (email: string, password: string) => Promise<{ error: AuthError | null }>
