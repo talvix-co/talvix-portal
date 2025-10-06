@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Input } from '../components/ui/input';
@@ -7,6 +7,7 @@ import { useAuth } from '../contexts/AuthContext';
 
 export const Login = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { signIn, signInWithGoogle, loading, error } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
@@ -26,14 +27,16 @@ export const Login = () => {
 
     const { error } = await signIn(formData.email, formData.password);
     if (!error) {
-      navigate('/job/0198fa28-0d4c-7a23-994b-f1aef93a06fb');
+      const redirectPath = searchParams.get('redirect') || '/not-found';
+      navigate(redirectPath);
     }
   };
 
   const handleGoogleLogin = async () => {
     const { error } = await signInWithGoogle();
     if (!error) {
-      navigate('/job/0198fa28-0d4c-7a23-994b-f1aef93a06fb');
+      const redirectPath = searchParams.get('redirect') || '/not-found';
+      navigate(redirectPath);
     }
   };
 
